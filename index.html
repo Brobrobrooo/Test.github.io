@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+  <link rel="stylesheet" href=" fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+  <!-- partial:index.partial.html -->
+  <div id="nav-bar">
+    <input id="nav-toggle" type="checkbox" />
+    <div id="nav-header">
+      <a id="nav-title" target="_blank">Bus<i class="fa-solid fa-bus"></i>ln</a>
+      <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+      <hr />
+    </div>
+    <div id="nav-content">
+      <div class="nav-button">
+        <a href="{% url "map" %}"><i class="fas fa-map"></i><span>Map</span></a>
+      </div>
+      <div class="nav-button">
+        <a href="#"><i class="fas fa-location-dot"></i><span>Track</span></a>
+      </div>
+      <div class="nav-button">
+        <a href="#"><i class="fas fa-calendar-days"></i><span>Schedule</span></a>
+      </div>
+      <hr />
+      <div class="nav-button">
+        <a href="{% url 'profile' %}"><i class="fas fa-user"></i><span>Profile</span></a>
+      </div>
+      <div class="nav-button">
+        <a href="#"><i class="fas fa-cog"></i><span>Setting</span></a>
+      </div>
+      <hr />
+      <div class="nav-button">
+        <i class="fas fa-gem"></i><span>Busln Pro</span>
+      </div>
+      <div class="nav-button">
+        <a href="/"><i class="fas fa-circle-info"></i></i><span>About us</span></a>
+      </div>
+      <hr />
+      <div class="nav-button">
+        <a href="{% url 'logout' %}"><i class="fas fa-sign-out"></i><span>Logout</span></a>
+      </div>
+      <div id="nav-content-highlight"></div>
+    </div>
+    <input id="nav-footer-toggle" type="checkbox" />
+    <div id="nav-footer">
+      <div id="nav-footer-heading">
+        <div id="nav-footer-avatar">
+          <img src="https://gravatar.com/avatar/4474ca42d303761c2901fa819c4f2547" />
+        </div>
+        <div id="nav-footer-titlebox">
+          {{ request.user.username }}<span id="nav-footer-subtitle">
+            {% if request.user.parent.is_pro %}
+            VIP
+        {% else %}
+            FREE
+        {% endif %}</span>
+        </div>
+        <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
+      </div>
+      <div id="nav-footer-content">
+        {% if request.user.parent.is_pro %}
+            Your subscription is VIP
+        {% else %}
+            Your subscription is FREE
+        {% endif %}
+      </div>
+    </div>
+  </div>
+    
+</body>
+</html>
 
